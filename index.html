@@ -3,21 +3,17 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:title" content="BizUP" />
+        <meta property="og:title" content="ZEROKING - 손가비 대표" />
         <meta property="og:type" content="website" />
-        <meta
-            property="og:image"
-            content="https://jongyoun3128.github.io/bizup/images/url.png"
-        />
-        <meta property="og:description" content="BizUp 전자명함입니다." />
-        <title>명함</title>
+        <meta property="og:description" content="ZEROKING 전자명함입니다." />
+        <title>ZEROKING 명함 - 손가비 대표</title>
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
         <div class="card-container">
             <!-- 앞면 -->
             <div class="card card-front">
-                <img src="images/logo.png" alt="" />
+                <img src="images/logo.png" alt="ZEROKING" />
             </div>
 
             <!-- 뒷면 -->
@@ -84,19 +80,290 @@
                 </div>
                 <div class="card-back-right">
                     <div class="logo-small">
-                        <img src="images/mini-logo.png" alt="" />
+                        <img src="images/mini-logo.png" alt="ZEROKING" />
                     </div>
                     <div class="tagline">BUSINESS & CONSULTING</div>
                     <div class="logo-small2">
-                        <img src="images/qr.png" alt="" />
+                        <img src="images/qr.png" alt="QR Code" />
                     </div>
                 </div>
             </div>
+            <!-- 액션 버튼 -->
+            <div class="action-buttons">
+                <button onclick="saveContact()" class="btn btn-save">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        />
+                        <path
+                            d="M17 21v-8H7v8M7 3v5h8"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        />
+                    </svg>
+                    연락처 저장
+                </button>
+                <button onclick="shareCard()" class="btn btn-share">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <circle
+                            cx="18"
+                            cy="5"
+                            r="3"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="6"
+                            cy="12"
+                            r="3"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="18"
+                            cy="19"
+                            r="3"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        />
+                        <path
+                            d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        />
+                    </svg>
+                    공유하기
+                </button>
+            </div>
+
             <div class="card-img">
                 <img src="images/page1.jpg" alt="" />
                 <img src="images/page2.jpg" alt="" />
                 <img src="images/page3.jpg" alt="" />
             </div>
         </div>
+
+        <!-- 공유 메뉴 모달 -->
+        <div id="shareModal" class="share-modal">
+            <div class="share-modal-content">
+                <div class="share-modal-header">
+                    <h3>공유하기</h3>
+                    <button onclick="closeShareModal()" class="close-btn">
+                        &times;
+                    </button>
+                </div>
+                <div class="share-options">
+                    <button onclick="shareKakao()" class="share-option">
+                        <div class="share-icon kakao-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 3C6.48 3 2 6.58 2 11c0 2.89 1.93 5.44 4.84 6.94-.2.73-.76 2.77-.87 3.21-.13.52.19.51.4.37.16-.11 2.42-1.63 3.53-2.39.69.09 1.41.14 2.14.14 5.52 0 10-3.58 10-8S17.52 3 12 3z"
+                                />
+                            </svg>
+                        </div>
+                        <span>카카오톡</span>
+                    </button>
+                    <button onclick="shareLine()" class="share-option">
+                        <div class="share-icon line-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"
+                                />
+                            </svg>
+                        </div>
+                        <span>라인</span>
+                    </button>
+                    <button onclick="shareEmail()" class="share-option">
+                        <div class="share-icon email-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                                />
+                            </svg>
+                        </div>
+                        <span>이메일</span>
+                    </button>
+                    <button onclick="shareSMS()" class="share-option">
+                        <div class="share-icon sms-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"
+                                />
+                            </svg>
+                        </div>
+                        <span>메시지</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // 연락처 저장 기능 (vCard 형식)
+            function saveContact() {
+                const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:손가비
+N:손;가비;;;
+ORG:ZEROKING
+TITLE:대표
+TEL;TYPE=CELL:1811-8428
+EMAIL:officecine01@gmail.com
+ADR;TYPE=WORK:;;벚꽃로 286 삼성리더스타워 1101호;가산동;금천구;;서울
+URL:${window.location.href}
+END:VCARD`;
+
+                const blob = new Blob([vCard], {
+                    type: "text/vcard;charset=utf-8",
+                });
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "ZEROKING_손가비_대표.vcf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
+
+                alert("연락처가 다운로드되었습니다!");
+            }
+
+            // 공유하기 기능 - 모달 열기
+            function shareCard() {
+                document.getElementById("shareModal").style.display = "flex";
+            }
+
+            // 모달 닫기
+            function closeShareModal() {
+                document.getElementById("shareModal").style.display = "none";
+            }
+
+            // 모달 외부 클릭시 닫기
+            window.onclick = function (event) {
+                const modal = document.getElementById("shareModal");
+                if (event.target === modal) {
+                    closeShareModal();
+                }
+            };
+
+            // 카카오톡 공유
+            function shareKakao() {
+                const url = window.location.href;
+                const text =
+                    "ZEROKING 손가비 대표의 명함입니다.\n전화: 1811-8428\n이메일: officecine01@gmail.com";
+
+                // 모바일에서 카카오톡 앱으로 공유
+                const kakaoUrl = `https://sharer.kakao.com/talk/friends/picker/link?app_key=YOUR_APP_KEY&validation_action=default&validation_params={"link_url":"${encodeURIComponent(
+                    url
+                )}"}`;
+
+                // 간단한 카카오톡 공유 (URL 스키마)
+                const message = `${text}\n\n${url}`;
+                const shareUrl = `kakaotalk://send?text=${encodeURIComponent(
+                    message
+                )}`;
+
+                window.location.href = shareUrl;
+
+                // 카카오톡이 설치되어 있지 않으면 웹 공유로 폴백
+                setTimeout(() => {
+                    if (
+                        confirm(
+                            "카카오톡이 설치되어 있지 않습니다.\n링크를 복사하시겠습니까?"
+                        )
+                    ) {
+                        copyToClipboard();
+                    }
+                }, 1000);
+
+                closeShareModal();
+            }
+
+            // 라인 공유
+            function shareLine() {
+                const url = window.location.href;
+                const text = "ZEROKING 손가비 대표의 명함입니다";
+
+                const lineUrl = `https://line.me/R/share?text=${encodeURIComponent(
+                    text + "\n" + url
+                )}`;
+                window.open(lineUrl, "_blank");
+
+                closeShareModal();
+            }
+
+            // 이메일 공유
+            function shareEmail() {
+                const subject = "ZEROKING - 손가비 대표 명함";
+                const body = `ZEROKING 손가비 대표의 명함입니다.
+
+회사: ZEROKING
+대표: 손가비
+전화: 1811-8428
+이메일: officecine01@gmail.com
+주소: 금천구 가산동 벚꽃로 286 삼성리더스타워 1101호
+
+명함 보기: ${window.location.href}`;
+
+                const mailtoUrl = `mailto:?subject=${encodeURIComponent(
+                    subject
+                )}&body=${encodeURIComponent(body)}`;
+                window.location.href = mailtoUrl;
+
+                closeShareModal();
+            }
+
+            // 문자 메시지 공유
+            function shareSMS() {
+                const text = `ZEROKING 손가비 대표의 명함입니다.\n\n전화: 1811-8428\n이메일: officecine01@gmail.com\n\n명함 보기: ${window.location.href}`;
+
+                // iOS와 Android 모두 지원
+                const smsUrl = `sms:?body=${encodeURIComponent(text)}`;
+                window.location.href = smsUrl;
+
+                closeShareModal();
+            }
+
+            // URL 클립보드 복사
+            function copyToClipboard() {
+                const url = window.location.href;
+
+                if (navigator.clipboard) {
+                    navigator.clipboard
+                        .writeText(url)
+                        .then(() => {
+                            alert("명함 링크가 복사되었습니다!");
+                        })
+                        .catch(() => {
+                            fallbackCopyToClipboard(url);
+                        });
+                } else {
+                    fallbackCopyToClipboard(url);
+                }
+            }
+
+            // 클립보드 복사 fallback
+            function fallbackCopyToClipboard(text) {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    document.execCommand("copy");
+                    alert("명함 링크가 복사되었습니다!");
+                } catch (err) {
+                    alert(
+                        "링크 복사 실패. URL을 수동으로 복사해주세요:\n" + text
+                    );
+                }
+
+                document.body.removeChild(textArea);
+            }
+        </script>
     </body>
 </html>

@@ -29,7 +29,6 @@ body {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     background: white;
-    transition: transform 0.3s ease;
 }
 
 /* 앞면 */
@@ -145,4 +144,153 @@ body {
 }
 .card-img img {
     width: 100%;
+}
+
+/* 액션 버튼 */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: "Segoe UI", "Noto Sans KR", sans-serif;
+}
+
+.btn-save {
+    background: #2c3e50;
+    color: white;
+}
+
+.btn-share {
+    background: #f5e6d3;
+    color: #2c3e50;
+}
+
+@media (max-width: 480px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+/* 공유 모달 */
+.share-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.share-modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.share-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.share-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.share-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+.share-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-family: "Segoe UI", "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.share-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.kakao-icon {
+    background: #FEE500;
+    color: #3C1E1E;
+}
+
+.line-icon {
+    background: #00B900;
+    color: white;
+}
+
+.email-icon {
+    background: #EA4335;
+    color: white;
+}
+
+.sms-icon {
+    background: #2196F3;
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .share-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
